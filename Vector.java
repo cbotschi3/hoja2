@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Vector {
-    // Puedes utilizar un ArrayList para manejar el tamaño variable del vector.
     private ArrayList<Integer> elementos;
 
     public Vector() {
