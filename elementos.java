@@ -1,25 +1,40 @@
+import java.util.ArrayList;
+import java.util.List;
 
-public enum elementos {
-    ;
+public interface elementos<T> {
+    int size();
 
-    static int size() {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'size'");
+    T remove(int index);
+
+    void add(T elemento);
+
+    boolean isEmpty();
+}
+
+class ImplementacionElementos<T> implements elementos<T> {
+    private List<T> lista = new ArrayList<>();
+
+    @Override
+    public int size() {
+        return lista.size();
     }
 
-    static <T> T remove(int i) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+    @Override
+    public T remove(int index) {
+        if (index >= 0 && index < lista.size()) {
+            return lista.remove(index);
+        } else {
+            throw new IndexOutOfBoundsException("Índice fuera de rango");
+        }
     }
 
-    static <T> void add(T elemento) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
+    @Override
+    public void add(T elemento) {
+        lista.add(elemento);
     }
 
-    static boolean isEmpty() {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
+    @Override
+    public boolean isEmpty() {
+        return lista.isEmpty();
     }
-
 }
