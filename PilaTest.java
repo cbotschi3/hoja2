@@ -1,35 +1,93 @@
-
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class PilaTest {
+
     @Test
-    public void testPila() {
+    public void testPushAndPop() {
         Pila<Integer> pila = new Pila<>();
+        assertTrue(pila.isEmpty());
+
         pila.push(1);
         pila.push(2);
+        pila.push(3);
+
+        assertFalse(pila.isEmpty());
+        assertEquals(Integer.valueOf(3), pila.pop());
         assertEquals(Integer.valueOf(2), pila.pop());
         assertEquals(Integer.valueOf(1), pila.pop());
-        assertEquals(true, pila.isEmpty());
+
+        assertTrue(pila.isEmpty());
     }
 
-    private void assertEquals(boolean b, boolean empty) {
-       
-        throw new UnsupportedOperationException("Unimplemented method 'assertEquals'");
+    @Test(expected = IllegalStateException.class)
+    public void testPopEmptyStack() {
+        Pila<String> pila = new Pila<>();
+        assertTrue(pila.isEmpty());
+
+        pila.pop();
     }
 
-    @Test
-    public void testVector() {
-        Vector vector = new Vector();
-        vector.add(1);
-        vector.add(2);
-        assertEquals(2, vector.size());
-        assertEquals(1, vector.get(0));
-        assertEquals(2, vector.get(1));
-        assertEquals(1, vector.remove(0));
-        assertEquals(1, vector.size());
+}
+
+class MiVector<T> {
+    private ArrayList<T> elementos;
+
+    public MiVector() {
+        elementos = new ArrayList<>();
     }
 
-    private void assertEquals(int i, int j) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'assertEquals'");
+    public void add(T elemento) {
+        elementos.add(elemento);
+    }
+
+    public T remove(int index) {
+        return elementos.remove(index);
+    }
+
+    public int size() {
+        return elementos.size();
+    }
+
+    public boolean isEmpty() {
+        return elementos.isEmpty();
+    }
+}
+
+import java.util.ArrayList;
+
+public class Pila<T> {
+    private MiVector<T> elementos;
+
+    public Pila() {
+        elementos = new MiVector<>();
+    }
+
+    public void push(T elemento) {
+        elementos.add(elemento);
+    }
+
+    public T pop() {
+        if (!isEmpty()) {
+            return elementos.remove(elementos.size() - 1);
+        } else {
+            throw new IllegalStateException("La pila está vacía");
+        }
+    }
+
+    public boolean isEmpty() {
+        return elementos.isEmpty();
+    }
+
+    public void realizarOperacion(char operador) {
+        throw new UnsupportedOperationException("Unimplemented method 'realizarOperacion'");
+    }
+
+    public boolean hayError() {
+        throw new UnsupportedOperationException("Unimplemented method 'hayError'");
+    }
+
+    public int obtenerResultado() {
+        throw new Unsupport
     }
 }
