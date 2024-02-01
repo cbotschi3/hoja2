@@ -67,4 +67,3 @@ class MiVector<T> {
         return elementos.isEmpty();
     }
 }
-
